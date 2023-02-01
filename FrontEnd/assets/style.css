@@ -84,6 +84,8 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -125,6 +127,54 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 60px;
+	margin-top: 60px;
+	font-weight: 700;
+	font-size: 16px;
+	color: #1D6154;
+	font-family: 'Syne';
+	width: 100%;
+	border: 2px solid #1D6154;
+	height: 37px;
+	border-radius: 60px;
+	padding-left: 20px;
+	padding-right: 20px;
+	cursor: pointer;
+}
+
+.container1{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 60px;
+	margin-top: 60px;
+	font-weight: 700;
+	font-size: 16px;
+	color: #1D6154;
+	font-family: 'Syne';
+	width: 50%;
+	border: 2px solid #1D6154;
+	height: 37px;
+	border-radius: 60px;
+	padding-left: 20px;
+	padding-right: 20px;
+	cursor: pointer;
+}
+
+
+.container:hover{
+	background-color: #1D6154;
+	color: white;
+}
+
+
+
+
 .gallery {
 	width: 100%;
 	display: grid;
