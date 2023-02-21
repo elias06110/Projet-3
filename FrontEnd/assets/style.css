@@ -128,49 +128,39 @@ li:hover {
 	margin-bottom: 1em;
 }
 
-.container{
+.filters{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 60px;
 	margin-top: 60px;
+	margin-left: 10px;
+	
 	font-weight: 700;
 	font-size: 16px;
+	background-color: white;
 	color: #1D6154;
 	font-family: 'Syne';
-	width: 100%;
 	border: 2px solid #1D6154;
 	height: 37px;
 	border-radius: 60px;
 	padding-left: 20px;
 	padding-right: 20px;
 	cursor: pointer;
+	flex-direction: row;
 }
 
-.container1{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 60px;
-	margin-top: 60px;
-	font-weight: 700;
-	font-size: 16px;
-	color: #1D6154;
-	font-family: 'Syne';
-	width: 50%;
-	border: 2px solid #1D6154;
-	height: 37px;
-	border-radius: 60px;
-	padding-left: 20px;
-	padding-right: 20px;
-	cursor: pointer;
-}
-
-
-.container:hover{
+.filters:hover{
 	background-color: #1D6154;
 	color: white;
 }
+
+#filters_category{
+	display: flex;
+	justify-content: center;
+	
+}
+
 
 
 
@@ -182,6 +172,8 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
+
+
 
 .gallery img {
 	width: 100%;
