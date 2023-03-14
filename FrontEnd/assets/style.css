@@ -62,6 +62,10 @@ section {
 	margin: 50px 0
 }
 
+.red{
+	color: red;
+}
+
 h1{
 	display: flex;
 	flex-direction: column;
@@ -85,6 +89,10 @@ h2{
 	color: #1D6154
 }
 
+a{
+	color: black;
+	text-decoration: none;
+}
 
 nav ul {
 	display: flex;
@@ -133,7 +141,7 @@ li:hover {
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 60px;
-	margin-top: 60px;
+	margin-top: 20px;
 	margin-left: 10px;
 	
 	font-weight: 700;
@@ -150,6 +158,32 @@ li:hover {
 	flex-direction: row;
 }
 
+.connect{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 35%;
+	font-weight: 700;
+	font-size: 16px;
+	background-color:#1D6154;
+	color: white;
+	font-family: 'Syne';
+	border: 2px solid #1D6154;
+	height: 37px;
+	border-radius: 60px;
+	margin-bottom: 6%;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.connexion{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 8%;
+	flex-direction: column;
+}
+
 .filters:hover{
 	background-color: #1D6154;
 	color: white;
@@ -161,9 +195,65 @@ li:hover {
 	
 }
 
+#user-error, #password-error{
+	color: red;
+	margin-top: 2%;
+}
 
 
 
+.banner-sous{
+	display: flex;
+	color: white;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	
+}
+
+.button-edition{
+height: 65%;
+width: 17%;
+background-color: white;
+border-radius: 50px ;
+text-decoration: none;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: 2%;
+color: black;
+}
+
+.banner{
+	
+	width: 100%;
+	height: 55px;
+	background-color: black;
+}
+
+.modif-pro{
+	display: flex;
+	margin-bottom: 2%;
+	text-decoration: none;
+	margin-left: 2%;
+	
+}
+
+
+.pro{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 120px;
+}
+
+.my-projects{
+	margin-left: 50px ;
+}
+
+.mode{
+	margin-left: 2%;
+}
 
 .gallery {
 	width: 100%;
@@ -175,13 +265,31 @@ li:hover {
 
 
 
+
 .gallery img {
 	width: 100%;
-
 }
+
+.modif-pic{
+	
+	margin-top: 2%;
+	margin-left: 10%;
+	text-decoration: none;
+}
+
+
+
+.pic{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	
+}
+
 #contact {
 	width: 50%;
-margin: auto;
+    margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -211,20 +319,112 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
-}
+
 
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
+
+
+.modal{
+	border: none;
+	border-radius: 10px 10px;
+	height: 830px;
+	width: 690px;
+}
+
+.gallery2 {
+	width: 80%;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-row-gap: 10px;
+	margin-top: 8%;
+	margin-left: 10%;
+}
+
+
+ .gallery2 img{
+	width: 100%;
+	
+ }
+
+ .gallery2 figure{
+	width: 90%;
+ }
+
+ .gallery2 figcaption{
+	width: 100%;
+ }
+
+
+#addPic{
+	display: none;
+}
+
+#userPic{
+	display: none;
+	cursor: pointer;
+}
+
+#userPic1{
+	cursor: pointer;
+}
+
+.modal-title{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+	margin-top: 5%;
+	font-family: 'Work Sans' ;
+	
+}
+
+.bar-modal{
+	margin-left: 15%;
+	margin-top: 6%;
+	margin-bottom: 6%;
+	justify-content:center;
+	align-items: center;
+	width: 70%;
+	height: 1.5px;
+	background-color: rgb(200, 200, 200);
+}
+
+.footer-modal{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	text-decoration: none;
+}
+
+.fa-trash-can{
+	background-color: black;
+	height: 25px;
+	width: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color:white;
+	position: relative;
+	left: 68px;
+	bottom: 125px;
+	border-radius: 4px 4px ;
+
+}
+
+fa-solid{
+	display: flex;
+}
+
+#cross{display: flex;
+	justify-content: flex-end;
+	height: 10px;
+}
+
 
