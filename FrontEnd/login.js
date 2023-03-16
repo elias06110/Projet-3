@@ -27,11 +27,7 @@ async function login(user) {
 	const url = "http://localhost:5678/api/users/login";
 	const response = await fetch(url,httpOptions);
 	return response;
-
-    
 }
-
-
 
 connexion.onsubmit= async (e)=>{
 
@@ -73,10 +69,7 @@ connexion.onsubmit= async (e)=>{
         console.log(new Error("erreur d'authentification"))
         
         
-    }
-
-
-}
+    }}
 
 
 

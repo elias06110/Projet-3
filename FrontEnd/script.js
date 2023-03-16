@@ -126,6 +126,8 @@ ButtonAll.addEventListener('click',function(){
 })
 
 
+// Modale 
+
 const openModal= document.querySelector(".open-link")
 const closeModal = document.querySelector(".close-link")
 const modal = document.querySelector(".modal")
@@ -146,10 +148,6 @@ function addfiguremodal(works, sectionGallery, figId) {
   let image = document.createElement("img");
   image.src = works.imageUrl;
   image.alt = works.title;
- 
-const iconDiv = document.createElement("div")
-
-
 
   const trash = document.querySelector(".gallery2")
   const deleteIcon = document.createElement("i")
@@ -159,9 +157,12 @@ const iconDiv = document.createElement("div")
 
   deleteIcon.classList.add("fa-solid")
   deleteIcon.classList.add("fa-trash-can" )
+  deleteIcon.classList.add("thrash" )
+
   deleteIcon.setAttribute("id" , figId)
 
-  iconDiv.append(deleteIcon)
+  divImage.append(deleteIcon)
+  divImage.append(image)
   
 
   image.crossOrigin = "anonymous";
@@ -172,21 +173,22 @@ const iconDiv = document.createElement("div")
   
 
   figure.append(image);
-  figure.append(iconDiv)
+  figure.append(divImage)
   figure.append(figure_caption);
   sectionGallery.append(figure);
-  
-  
+
+
   
 
-  deleteIcon.addEventListener('click',(event)=>{
+
+  // Poubelle pour supprimer images 
+
+  deleteIcon.addEventListener('click',()=>{
     
     let idItem = deleteIcon.id
    deleteImage(idItem)
     
   })}
-
-
 
   function deleteImage(id){
     
@@ -254,12 +256,6 @@ else{
   cacher()
 }
 
-
-// Ajout d'images
-
-
-
-
 // Image User 
 
 document.querySelector("#userPic").addEventListener("change",(e)=>{
@@ -278,7 +274,7 @@ document.querySelector("#userPic").addEventListener("change",(e)=>{
 
 async function sendWork(){
   await fetch('http://localhost:5678/api/works',{
-  method:"POST",
+  
   contentType:"application/json",
   headers:{
     "Authorization" : "Bearer " + token}})
@@ -289,3 +285,12 @@ async function sendWork(){
   })}
 
   sendWork()
+
+  // supprimer la gallerie
+
+  const deleteALl = document.querySelector("#delete-all")
+
+  deleteALl.addEventListener('click',()=>{
+    const gallery = document.querySelector(".gallery")
+    gallery.remove()
+  })
