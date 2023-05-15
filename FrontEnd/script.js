@@ -215,13 +215,15 @@ function addfiguremodal(works, sectionGallery, figId) {
 
   // Poubelle pour supprimer images
 
-  deleteIcon.addEventListener("click", () => {
+  deleteIcon.addEventListener("click", (e) => {
+    e.preventDefault()
     let idItem = deleteIcon.id;
-    deleteImage(idItem);
+    deleteImage(idItem,e);
   });
 }
 
 function deleteImage(id, e) {
+  e.preventDefault()
   fetch(`http://localhost:5678/api/works/${id}`, {
     method: "DELETE",
     contentType: "application/json",
@@ -232,6 +234,11 @@ function deleteImage(id, e) {
     .then((data) => data)
     .then((result) => {
       console.log("suppression effectué");
+      document.querySelector(".modal2-content").reset();
+      document.querySelector(".modal-body").innerHTML = "";
+      displaymodal()
+      document.querySelector(".gallery").innerHTML = "";
+      displayfigure()
     });
 }
 
@@ -262,7 +269,7 @@ function addGallery(works) {
     listeElement.appendChild(categorieListe);
   });
   const ajoutTravaux = document.querySelector(".modal2-content");
-  ajoutTravaux.addEventListener("submit", function (event) {
+  ajoutTravaux.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const chargeUtile = new FormData();
@@ -271,26 +278,21 @@ function addGallery(works) {
     chargeUtile.append("category", category.value);
     console.log("image element :", chargeUtile);
 
-    fetch("http://localhost:5678/api/works", {
+    await fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: { Authorization: "Bearer " + infoToken.token },
       body: chargeUtile,
     })
       .then((response) => response.json())
       .then((data) => {
-        // Verification des données de l'api //
-        console.log("dataAdd :", data);
-        if (data.error) {
-          throw data.error;
-        }
-        // Rafraichissement des listes de projets //
-        projets.push(data);
-        loadInfosGallery(projets);
-        loadModalBody(projets);
-        // Réinitialisation du formulaire //
         document.querySelector(".modal2-content").reset();
+        showModal2(false);
         verifieChampsOk();
         showImageForm(false);
+        document.querySelector(".gallery").innerHTML = "";
+        displayfigure()
+        document.querySelector(".modal-body").innerHTML = "";
+        displaymodal()
       })
       .catch((error) => {
         console.log("error :", error);
@@ -321,7 +323,7 @@ function verifieChampsOk(show = true) {
   } else {
     document.querySelector(".bouton-valider").disabled = true;
   }
-  console.log("inputtest", inputImage, inputCategory, inputTitre);
+  
 }
 // Sert à afficher l'image et changer l'apparence du bouton valider//
 function changerBouton() {
