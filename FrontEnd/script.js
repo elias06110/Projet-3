@@ -11,6 +11,7 @@ function addfigure(works, sectionGallery) {
   figure_caption.appendChild(document.createTextNode(works.title));
   let figure = document.createElement("figure");
 
+  
   figure.append(image);
   figure.append(figure_caption);
   sectionGallery.append(figure);
@@ -33,7 +34,7 @@ async function displayfigure() {
 
 displayfigure();
 
-/* fonction qui affiche les filtres */
+/* fonction qui appelle l'api de catégories et affiche les filtres */
 
 async function displayFilter() {
   await fetch("http://localhost:5678/api/categories")
@@ -41,32 +42,59 @@ async function displayFilter() {
     .then((category) => {
       addGallery(category);
       category.forEach((category) => {
-        addfilter(category.name);
+        addfilter(category.name, category.id);
+        console.log(category)
       });
     });
 }
-
 displayFilter();
+
+
 
 /* fonction qui ajoute les filtres */
 
-function addfilter(name) {
-  const filter = document.querySelector(".filtres");
 
+function addfilter(name, id) {
+  const filter = document.querySelector(".filtres");
   let button = document.createElement("button");
 
+  button.classList.add("category"+id);
   button.classList.add("filters");
 
   button.type = "button";
-
   button.append(document.createTextNode(name));
   filter.append(button);
+
+
+// Sélectionnez tous les éléments de filtre
+const filtres = document.getElementsByClassName("filters");
+
+// Définissez la fonction pour changer la couleur des filtres
+function changerCouleur() {
+  
+  for (let i = 0; i < filtres.length; i++) {
+    filtres[i].classList.remove("selected");
+  }
+
+  this.classList.add("selected");
+}
+
+for (let i = 0; i < filtres.length; i++) {
+  filtres[i].addEventListener("click", changerCouleur);
+  
+  
+}
+
 
   // quand l'utilisateur est connecté les filtres s'enlevent
 
   if (sessionStorage.getItem("token")) {
     filter.style.display = "none";
   }
+
+
+
+
 
   /* bouttons de filtres*/
 
@@ -81,7 +109,9 @@ function addfilter(name) {
         document.querySelector(".gallery").innerHTML = "";
         WorksFilter.forEach((WorksFiltre) => {
           addfigure(WorksFiltre, sectionGallery, works);
-         
+          ButtonAll.style.backgroundColor="white"
+          ButtonAll.style.color="#1D6154"
+          
         });
       });
   });
@@ -89,11 +119,21 @@ function addfilter(name) {
 
 /* Boutton "tous */
 
+
 var ButtonAll = document.querySelector(".all");
+ButtonAll.style.backgroundColor="#1D6154"
+ButtonAll.style.color="white"
+ButtonAll.classList.add("filters")
+
+
+
 
 ButtonAll.addEventListener("click", function () {
   document.querySelector(".gallery").innerHTML = "";
+  ButtonAll.style.backgroundColor="#1D6154"
+ ButtonAll.style.color="white"
   displayfigure();
+  
 });
 
 // Afficher mes boutons modifier//
@@ -107,15 +147,17 @@ function afficheBoutons() {
     document.querySelector(".btn-modif2").style.display = "none";
     document.querySelector(".btn-modif3").style.display = "none";
     document.querySelector(".barre-noir").style.display = "none";
-    document.querySelector("a").innerText = "login";
-    const login = document.querySelector("a");
+    document.querySelector("#login").innerText = "login";
+    const login = document.querySelector("#login");
     login.addEventListener("click", function () {
       window.location.href = "login.html";
     });
   } else {
+    document.querySelector(".barre-noir").style.display="flex"
     document.querySelector(".filtres").style.display = "none";
-    document.querySelector("a").innerText = "logout";
-    const logout = document.querySelector("a");
+    document.querySelector("#login").innerText = "logout";
+    const logout = document.querySelector("#login");
+    document.querySelector(".div-header").style.marginTop="100px"
     logout.addEventListener("click", function () {
       window.sessionStorage.removeItem("token");
       window.location.href = "index.html";
@@ -141,7 +183,7 @@ function showModal2(show = true) {
     modal2.classList.remove("hide");
   }
 }
-// modal de suppression //
+// boutons pour les modales //
 document.querySelector(".btn-modif3").addEventListener("click", function () {
   showModal(true);
 });
@@ -206,6 +248,7 @@ function addfiguremodal(works, sectionGallery, figId) {
 
   let figure_caption = document.createElement("figcaption");
   figure_caption.appendChild(document.createTextNode("éditer"));
+  figure_caption.classList.add("editer")
   let figure = document.createElement("figure");
 
   figure.append(image);
@@ -213,14 +256,14 @@ function addfiguremodal(works, sectionGallery, figId) {
   figure.append(figure_caption);
   sectionGallery.append(figure);
 
-  // Poubelle pour supprimer images
-
   deleteIcon.addEventListener("click", (e) => {
     e.preventDefault()
     let idItem = deleteIcon.id;
     deleteImage(idItem,e);
   });
 }
+
+// fonction pour supprimer un travail 
 
 function deleteImage(id, e) {
   e.preventDefault()
@@ -241,6 +284,8 @@ function deleteImage(id, e) {
       displayfigure()
     });
 }
+
+// fonction qui affiche les projets dans la modale
 
 async function displaymodal() {
   await fetch("http://localhost:5678/api/works")
@@ -299,6 +344,8 @@ function addGallery(works) {
       });
   });
 }
+
+// affiche l'image du projet 
 
 function showImageForm(show = true) {
   const form = document.querySelector(".contenueImg");

@@ -2,11 +2,13 @@ function loginUsers() {
     const formulaireLogin = document.querySelector(".formulaire-login");
     formulaireLogin.addEventListener("submit", function (event) {
         event.preventDefault();
+        
         // Création du couple email/mot de passe //
         const couple = {
             email: event.target.querySelector("[name=email]").value,
             password: event.target.querySelector("[name=password]").value,
         };
+        
         // Création de la charge utile au format JSON //
         const chargeUtile = JSON.stringify(couple);
         // Appel de la fonction fetch avec toutes les informations nécessaires //
@@ -36,5 +38,14 @@ function redirection (token) {
         return alert("Erreur dans l’identifiant ou le mot de passe")
     };
 };
+
+function redirectionProjets(){
+    const projets = document.getElementById("projets")
+    projets.addEventListener("click",()=>{
+        window.location.href ='index.html';
+    })
+}
+
+redirectionProjets()
 
 /* email: sophie.bluel@test.tld password: S0phie */ 
