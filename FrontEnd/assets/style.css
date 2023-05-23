@@ -311,6 +311,8 @@ footer nav ul {
     justify-content: space-between;	
 }
 .fermerbt, .retour, .fermerbt2{
+	position: relative;
+	
 	border: none;
 	background: none;
 }
@@ -413,8 +415,8 @@ footer nav ul {
 	display: flex;
    border: none;
    border-radius: 10px 10px;
-   padding-left: 70px;
-   padding-right: 70px;
+   padding-left: 105px;
+   padding-right: 105px;
    padding-top: 30px;
    padding-bottom:30px;
    width: 690px;
@@ -455,7 +457,9 @@ footer nav ul {
 	background-color: #FFF;
 	width: 40%;
     height: 570px;
-    padding: 30px 30px;
+    padding-right: 100px ;
+    padding-left: 100px;
+	padding-top: 50px;
     border-radius: 10px;
 	display: flex;
 	flex-direction: column;

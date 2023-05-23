@@ -42,10 +42,31 @@ function redirection (token) {
 function redirectionProjets(){
     const projets = document.getElementById("projets")
     projets.addEventListener("click",()=>{
-        window.location.href ='index.html';
+        window.location.href ='index.html#projets';
     })
 }
 
+var contact = document.querySelector("#contact")
+contact.addEventListener('click',()=>{
+    redirectToElement()
+})
+
+function redirectToElement() {
+    
+        setTimeout(function() {
+        
+        
+            window.location.href ='index.html#contact';
+        
+    }, 3000);
+    window.location.href ='index.html#contact';
+    
+    
+   
+}
+
+
 redirectionProjets()
+
 
 /* email: sophie.bluel@test.tld password: S0phie */ 
